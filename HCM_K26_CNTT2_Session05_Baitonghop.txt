@@ -1,0 +1,56 @@
+Phần 1 – CLI vs GUI và cấu trúc câu lệnh
+Phân tích câu lệnh ls -Force C:\Windows\Logs:
+
+Command: ls (hoặc Get-ChildItem)
+
+Options/Flags: -Force
+
+Argument: C:\Windows\Logs
+
+Lý do dùng Terminal/SSH với máy chủ Cloud:
+Máy chủ Cloud thường ở dạng Headless (không có giao diện màn hình, chỉ chạy nền dòng lệnh nhằm tiết kiệm tối đa tài nguyên phần cứng, RAM và băng thông). Do đó, quản trị viên bắt buộc phải dùng Terminal/SSH để thao tác từ xa.
+
+Phần 2 – Điều hướng hệ thống file
+Relative Path từ Desktop: cd ./quan-ly-sinh-vien (hoặc cd quan-ly-sinh-vien)
+
+Absolute Path tới main.py: C:\Users\student\Desktop\quan-ly-sinh-vien\src\main.py
+
+Xem file ẩn của thư mục data từ src\ (1 lệnh duy nhất):
+ls -Force ..\data
+
+Phần 3 – Thao tác file và thư mục
+Tạo đồng thời 2 thư mục con (PowerShell tự tạo thư mục cha):
+mkdir quan-ly-sinh-vien\src, quan-ly-sinh-vien\data
+
+Tạo 3 file rỗng trong 1 dòng lệnh:
+New-Item quan-ly-sinh-vien\src\main.py, quan-ly-sinh-vien\src\utils.py, quan-ly-sinh-vien\README.md -ItemType File
+
+Đổi tên và sao lưu dự án:
+
+Đổi tên: Rename-Item quan-ly-sv quan-ly-sinh-vien
+
+Sao lưu (copy đệ quy toàn bộ thư mục kèm con): Copy-Item quan-ly-sinh-vien -Destination backup-quan-ly-sinh-vien -Recurse
+
+Phần 4 – Xử lý lỗi Terminal
+Log lỗi số 2 (cd scr không tồn tại):
+
+Chẩn đoán: Lỗi gõ sai chính tả tên thư mục (scr thay vì src).
+
+Cách check bằng Tab: Gõ cd sc rồi nhấn phím Tab, PowerShell sẽ tự động điền hoặc gợi ý đúng tên thư mục là src.
+
+Log lỗi số 3 (Access is denied khi chạy .\setup.ps1):
+
+Chẩn đoán: Do chính sách bảo mật Execution Policy của Windows chặn không cho chạy script cục bộ.
+
+Cách khắc phục: Gõ lệnh Set-ExecutionPolicy RemoteSigned -Scope Process rồi chạy lại script.
+
+Log lỗi số 1 (Xóa thư mục old-version bị hỏi xác nhận vì có file con):
+
+Đơn thuốc (lệnh xóa sạch không hỏi): rm old-version -Recurse -Force
+Bảng phân tích 4 bước xử lý Log lỗi số 4 được chuyển thành văn bản liền mạch như sau:
+
+(a) Dòng chứa thông điệp lỗi trực tiếp nhất: FileNotFoundError: [Errno 2] No such file or directory: 'data/input.csv'
+
+(b) Từ khóa lỗi (Error Keyword): FileNotFoundError hoặc No such file or directory
+
+(c) Điều cần kiểm tra tiếp để sửa lỗi: Kiểm tra vị trí hiện tại (đang đứng trong src\) và đường dẫn trong code (data/input.csv bị sai vì thực tế thư mục data nằm ở cấp cha, phải sửa thành ..\data\input.csv).

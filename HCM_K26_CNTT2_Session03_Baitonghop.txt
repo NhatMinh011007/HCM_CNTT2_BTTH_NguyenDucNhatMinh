@@ -1,0 +1,27 @@
+Phần 1 — Kiến trúc Hệ điều hành
+Đa nhiệm không xung đột: Do hệ điều hành phân bổ thời gian CPU (time-sharing) và cấp cho mỗi app một vùng nhớ riêng biệt (isolated memory).
+
+Shell vs Kernel: Double-click là gọi Shell (lớp giao diện) trước để nó dịch lệnh xuống Kernel (lõi phần cứng). Người dùng không chạm trực tiếp vào Kernel vì sơ suất nhỏ là sập nguồn máy (màn hình xanh).
+
+Phần 2 — Cây thư mục & Ổ đĩa
+Cấu trúc: Root là D:\, Parent của ảnh là Hinh anh, file ảnh đóng vai trò là "lá" (leaf).
+
+Rủi ro lưu ổ C (Desktop/Downloads): Cài lại Win là bay sạch data; đường dẫn có khoảng trắng (tên User) cực kỳ dễ lỗi khi chạy code hoặc script. Phải đẩy sang ổ D hoặc E.
+
+Phần 3 — Đường dẫn Path
+Absolute: D:\Nam1\HocKy1\MonHoc\CongNgheThongTin\BaiTapLon\Session02\BaoCaoCuoiKy\Chuong1\Hinh anh\anh 1.jpg
+
+Relative: assets/logo.png (Dùng cái này để nén gửi sang máy giảng viên không bị gãy link do lệch tên thư mục cha).
+
+Phần 4 — Đặt tên chuẩn
+bao-cao-bai-tap-lon-it101-ban-cuoi-v2.docx
+
+Phần 5 — Dọn ổ đĩa
+Lỗi cũ: Lồng tới 7 cấp (vi phạm quy tắc 3 cấp, dễ chạm trần giới hạn đường dẫn Windows).
+
+Chuẩn mới (theo 4 trụ cột): D:\02_Projects\IT101-BaiTapLon\images\anh-1.jpg
+
+Phần 6 — Đuôi file & File ẩn
+Cạm bẫy: File đuôi .pdf nhưng thực chất là .pdf.exe (mã độc giả dạng).
+
+Cách phát hiện: Vào File Explorer > bấm tab View > tích chọn File name extensions để nó lòi cái đuôi .exe ra rồi xóa khẩn trương.

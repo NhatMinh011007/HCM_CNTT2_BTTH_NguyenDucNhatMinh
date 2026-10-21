@@ -1,0 +1,25 @@
+1. Phần SRS & Mục lục tự động
+
+Phân cấp đoạn: H1 (mục chính), H2 (mục con), H3 (chi tiết sâu).
+
+Làm mục lục: Vào References > Table of Contents. Lúc tài liệu nhảy trang, chỉ cần click vào mục lục, nhấn F9 (hoặc Update Field > Update entire table) là xong.
+
+2. Xử lý lỗi Excel & Lọc dữ liệu
+
+3 lỗi cần tránh ngay: Gộp ô A1:E1 làm tiêu đề (Sai quy tắc 1), để trống hàng 5 (Sai quy tắc 4), nhét dòng Tổng cộng vào giữa bảng (Sai quy tắc 2 & 5).
+
+Cách lọc: Bôi đen toàn bộ bảng, bấm Ctrl + Shift + L, chọn cột Tình trạng và tích vào "Quá hạn".
+
+3. Khắc phục lỗi VLOOKUP (Mã S099)
+
+Nguyên nhân bị #N/A: Mã sách không tồn tại trong bảng tra cứu.
+
+Giải pháp tại ô F4: Bọc thêm IFERROR để trả về câu thông báo thân thiện thay vì lỗi hệ thống:=IFERROR(VLOOKUP(C4, DanhMucSach!$A$2:$C$4, 2, FALSE), "Không tìm thấy sách")
+
+4. Thiết kế Slide báo cáo
+
+Tiêu đề kết luận (Assertion Title): "Dữ liệu phiếu mượn Tháng 10 đã được chuẩn hóa 100%: Phát hiện 25% quá hạn và 1 mã lỗi"
+
+Hình ảnh: Dùng Donut Chart để show tỷ lệ các trạng thái mượn sách cho gọn gàng.
+
+Thông số: Tuân thủ Rule 10/20/30 (slide nằm trong giới hạn 10 slide, thời lượng trình bày 2 phút, font chữ tối thiểu 30pt).
